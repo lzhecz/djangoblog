@@ -19,10 +19,13 @@ class Category(models.Model):
 
 class Tag(models.Model):
     title = models.CharField(max_length = 50, verbose_name = 'Tag name')
-    slug = models.SlugField(max_length = 255, unique = True, db_index = True, verbose_name = "Tag URL")
+    slug = models.SlugField(max_length = 50, unique = True, db_index = True, verbose_name = "Tag URL")
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('tag', kwargs = {'slug': self.slug})
 
     class Meta:
         ordering = ['title']
