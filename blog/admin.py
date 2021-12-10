@@ -17,7 +17,7 @@ class PostAdminForm(forms.ModelForm):
 class PostAdmin(admin.ModelAdmin):
     form = PostAdminForm
     prepopulated_fields = {'slug': ('title',)}
-    list_display = ('id', 'title', 'slug', 'category', 'created_at', 'get_photo',)
+    list_display = ('id', 'title', 'slug', 'category', 'created_at', 'get_photo', 'views',)
     list_display_links = ('id', 'title')
     search_fields = ('title',)
     list_filter = ('category', 'tags',)
