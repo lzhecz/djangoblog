@@ -1,7 +1,5 @@
-<h2 class="sidebar-title">Popular posts</h2>
-<div class="grid">
-    {% for post in posts %}
-        <div class="portfolio-item popular">
+{% for post in posts %}
+        <div class="portfolio-item">
             {% if post.photo %}
                 <img src="{{ post.photo.url }}" alt="{{ post.title }}">
             {% else %}
@@ -9,8 +7,7 @@
             {% endif %}
             <div class="portfolio-text">
                 <h5><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5>
-                <p>By {{ post.author }}<span>|</span>{{ post.created_at|date:'j F Y' }}</p>
+                <p><b>By {{ post.author }}</b><span> | </span>{{ post.created_at|date:'j F Y' }}</p>
             </div>
         </div>
-    {% endfor %}
-</div>
+{% endfor %}

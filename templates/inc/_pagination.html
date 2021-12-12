@@ -5,10 +5,10 @@
             {# First and Previus Pages #}
             {% if page_obj.has_previous %}
                 {% if page_obj.number != 2 %}
-                <a class="page-numbers" href="?page=1">
+                <a class="page-numbers" href="?{{ s }}page=1">
                     <i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
                 {% endif %}
-                <a class="page-numbers" href="?page={{ page_obj.previous_page_number }}">
+                <a class="page-numbers" href="?{{ s }}page={{ page_obj.previous_page_number }}">
                     <i class="fa fa-angle-left" aria-hidden="true"></i></a>
             {% endif %}
 
@@ -17,16 +17,16 @@
                 {% if page_obj.number == p %}
                     <span class="page-numbers current">{{ p }}</span>
                 {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
-                    <a class="page-numbers" href="?page={{ p }}">{{ p }}</a>
+                    <a class="page-numbers" href="?{{ s }}page={{ p }}">{{ p }}</a>
                 {% endif %}
             {% endfor %}
 
             {# Next and Last Pages #}
             {% if page_obj.has_next %}
-                <a class="page-numbers" href="?page={{ page_obj.next_page_number }}">
+                <a class="page-numbers" href="?{{ s }}page={{ page_obj.next_page_number }}">
                     <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                 {% if page_obj.number != page_obj.paginator.num_pages|add:-1%}
-                <a class="page-numbers" href="?page={{ page_obj.paginator.num_pages }}">
+                <a class="page-numbers" href="?{{ s }}page={{ page_obj.paginator.num_pages }}">
                     <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                     {% endif %}
             {% endif %}

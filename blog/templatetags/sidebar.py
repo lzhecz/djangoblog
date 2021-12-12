@@ -14,3 +14,4 @@ def get_popular_post(cnt=None):
 def get_tags_cloud(cnt=None):
     tags = Tag.objects.all()[:cnt]
     return {'tags': tags}
+

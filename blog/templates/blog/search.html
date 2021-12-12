@@ -1,28 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load sidebar %}
 
 {% block title %}{{ title }} | {{ block.super }}{% endblock %}
 
 {% block content %}
 
-    <section class="blog-post-area">
+    <section class="mt-0 blog-post-area top-line">
         <div class="container">
             <div class="row">
                 <div class="blog-post-area-style">
-                    <div class="bg-text">
-                        <h3>{{ title }} </h3>
-                    </div>
-                    <div class="row justify-content-md-center col-md-12">
-                       {% include 'inc/_search.html' %}
-                        <div class="single-post-big ">
-
-                            {% get_popular_post 1 %}
-
-                        </div>
-
-                    </div>
-                    <div class="posts mt-3 mb-5">
+                    <div class="posts mt-5 mb-5">
                         {% for post in posts %}
                             <div class="col-md-3">
                                 <div class="single-post m-2">
@@ -38,6 +25,13 @@
                                     </h4>
                                     <p>{{ post.content|truncatewords_html:20|safe }}</p>
                                     <h4><span>{{ post.created_at|date:'j F Y' }}</span></h4>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <div class="row justify-content-md-center col-md-12">
+                                <div class="col-md-7">
+                                    {% include 'inc/_search.html' %}
+                                    <div class="m-3 single-blog-area"><h2>Your search did not match any post.</h2></div>
                                 </div>
                             </div>
                         {% endfor %}
